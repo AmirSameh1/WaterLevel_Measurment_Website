@@ -18,10 +18,6 @@
 
 <body>
 
-     <div class="chart-container">
-        <canvas id="myChart"></canvas>
-    </div>
-
 
     <div class="categories">
         <span>Date</span>
@@ -35,6 +31,64 @@
     <div class="dashboard" id ="dashboard"></div>
     </div>
 
+
+    <div class="chart-container">
+        <div class ="graph">
+
+            <div class="y-axis">
+                <div class="y-label">100</div>
+                <div class="y-label">75</div>
+                <div class="y-label">50</div>
+                <div class="y-label">25</div>
+                <div class="y-label">0</div>
+            </div>
+
+            <div class="bar-container" id="depth1-graph">
+
+            </div>
+    
+            <div class="bar-container" id="depth2-graph">
+                
+            </div>
+
+        </div>
+        
+        <div class="chart-tag">
+           <div> Depth 1</div>
+           <div> Depth 2</div>
+        </div>
+
+    </div>
+
+
+
+    <div class="chart-container">
+        <div class ="graph">
+
+            <div class="y-axis">
+                <div class="y-label">100</div>
+                <div class="y-label">75</div>
+                <div class="y-label">50</div>
+                <div class="y-label">25</div>
+                <div class="y-label">0</div>
+            </div>
+
+            <div class="bar-container" id="temp1-graph">
+            </div>
+    
+            <div class="bar-container" id="temp2-graph">
+            </div>
+
+        </div>
+        
+        <div class="chart-tag">
+           <div> temp 1</div>
+           <div> temp 2</div>
+        </div>
+
+    </div>
+
+    
     <script type="module" src="FirebaseData.js"></script>
 
     <h1  class="name">Project by: Embedded Legends</h1>
