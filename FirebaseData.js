@@ -31,7 +31,7 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 // Reference to your data
-const dataRef = ref(db, 'your-data-path');
+const dataRef = ref(db, 'sensors/data');
 
 
 // Fetch all past data and update dashboard
