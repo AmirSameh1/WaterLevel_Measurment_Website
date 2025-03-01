@@ -11,7 +11,7 @@ import { getDatabase, ref, onValue, onChildAdded } from "https://www.gstatic.com
 
 const firebaseConfig = {
 
-    apiKey: "AIzaSyClMKnJj5AMrkzfJscHRBwRyXXsRQUzUaU",
+  apiKey: "AIzaSyClMKnJj5AMrkzfJscHRBwRyXXsRQUzUaU",
   authDomain: "water-level-sensor-data-78d28.firebaseapp.com",
   databaseURL: "https://water-level-sensor-data-78d28-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "water-level-sensor-data-78d28",
@@ -54,6 +54,42 @@ onValue(dataRef, (snapshot) => {
       <span>${entry.temp2}</span>
       `;
       document.getElementById('dashboard').prepend(dataContainer);
+
+
+      const dataContainer1 = document.createElement('div');
+      dataContainer1.className = 'bar';  // Set the class to "bar"
+      
+      dataContainer1.innerHTML = `
+      <div class="bar" style="height: ${entry.depth1}%;"></div>
+      `;
+      document.getElementById('depth1-graph').prepend(dataContainer1);
+
+      const dataContainer2 = document.createElement('div');
+      dataContainer2.className = 'bar';  // Set the class to "bar"
+      
+      dataContainer2.innerHTML = `
+      <div class="bar" style="height: ${entry.depth2}%;"></div>
+      `;
+      document.getElementById('depth2-graph').prepend(dataContainer2);
+
+
+      const dataContainer3 = document.createElement('div');
+      dataContainer3.className = 'bar';  // Set the class to "bar"
+      
+      dataContainer3.innerHTML = `
+      <div class="bar" style="height: ${(entry.temp1)*2} %;"></div>
+      `;
+      document.getElementById('temp1-graph').prepend(dataContainer3);
+
+
+      const dataContainer4 = document.createElement('div');
+      dataContainer4.className = 'bar';  // Set the class to "bar"
+      
+      dataContainer4.innerHTML = `
+      <div class="bar" style="height: ${(entry.temp2)*2}%;"></div>
+      `;
+      document.getElementById('temp2-graph').prepend(dataContainer4);
+
     }
   });
 
@@ -76,39 +112,43 @@ onChildAdded(dataRef, (snapshot) => {
   <span>${entry.temp2}</span>
   `;
   document.getElementById('dashboard').prepend(dataContainer);
-});
 
-function createChart() {
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
-        type: 'line', // Line chart
-        data: {
-            labels: labels,      // Time as the X-axis labels
-            datasets: [{
-                label: 'Temperature (°C)',
-                data: values,      // Temperature values as Y-axis data
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 2,
-                fill: false         // Don't fill under the line
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Time'
-                    }
-                },
-                y: {
-                    title: {
-                        display: true,
-                        text: 'Temperature (°C)'
-                    },
-                    beginAtZero: false
-                }
-            }
-        }
-    });
-}
+
+
+  const dataContainer1 = document.createElement('div');
+      dataContainer1.className = 'bar';  // Set the class to "bar"
+      
+      dataContainer1.innerHTML = `
+      <div class="bar" style="height: ${entry.depth1}%;"></div>
+      `;
+      document.getElementById('depth1-graph').prepend(dataContainer1);
+
+      const dataContainer2 = document.createElement('div');
+      dataContainer2.className = 'bar';  // Set the class to "bar"
+      
+      dataContainer2.innerHTML = `
+      <div class="bar" style="height: ${entry.depth2}%;"></div>
+      `;
+      document.getElementById('depth2-graph').prepend(dataContainer2);
+
+
+      const dataContainer3 = document.createElement('div');
+      dataContainer3.className = 'bar';  // Set the class to "bar"
+      
+      dataContainer3.innerHTML = `
+      <div class="bar" style="height: ${(entry.temp1)*2} %;"></div>
+      `;
+      document.getElementById('temp1-graph').prepend(dataContainer3);
+
+
+      const dataContainer4 = document.createElement('div');
+      dataContainer4.className = 'bar';  // Set the class to "bar"
+      
+      dataContainer4.innerHTML = `
+      <div class="bar" style="height: ${(entry.temp2)*2}%;"></div>
+      `;
+      document.getElementById('temp2-graph').prepend(dataContainer4);
+
+
+
+});
