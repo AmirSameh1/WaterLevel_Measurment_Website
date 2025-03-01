@@ -57,7 +57,7 @@ onValue(dataRef, (snapshot) => {
       <span>${entry.temp2}</span>
         <hr>
       `;
-      document.getElementById('dashboard').appendChild(dataContainer);
+      document.getElementById('dashboard').prepend(dataContainer);
     }
   });
 
@@ -80,5 +80,5 @@ onChildAdded(dataRef, (snapshot) => {
   <span>${entry.temp2}</span>
     <hr>
   `;
-  document.getElementById('dashboard').appendChild(dataContainer);
+  document.getElementById('dashboard').prepend(dataContainer);
 });
