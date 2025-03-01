@@ -80,3 +80,38 @@ onChildAdded(dataRef, (snapshot) => {
   `;
   document.getElementById('dashboard').prepend(dataContainer);
 });
+
+function createChart() {
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'line', // Line chart
+        data: {
+            labels: labels,      // Time as the X-axis labels
+            datasets: [{
+                label: 'Temperature (°C)',
+                data: values,      // Temperature values as Y-axis data
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 2,
+                fill: false         // Don't fill under the line
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Time'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Temperature (°C)'
+                    },
+                    beginAtZero: false
+                }
+            }
+        }
+    });
+}
