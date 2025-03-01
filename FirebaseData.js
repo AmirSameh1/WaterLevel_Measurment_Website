@@ -49,12 +49,12 @@ onValue(dataRef, (snapshot) => {
       dataContainer.className = 'data-row';  // Set the class to "data-row"
       
       dataContainer.innerHTML = `
-      <span>${data.date}</span>
-      <span>${data.time}</span>
-      <span>${data.depth1}</span>
-      <span>${data.temp1}</span>
-      <span>${data.depth2}</span>
-      <span>${data.temp2}</span>
+      <span>${entry.date}</span>
+      <span>${entry.time}</span>
+      <span>${entry.depth1}</span>
+      <span>${entry.temp1}</span>
+      <span>${entry.depth2}</span>
+      <span>${entry.temp2}</span>
         <hr>
       `;
       document.getElementById('dashboard').appendChild(dataContainer);
@@ -69,14 +69,15 @@ onChildAdded(dataRef, (snapshot) => {
   // Create new elements for the dashboard
   const dataContainer = document.createElement('div');
   dataContainer.className="data-row";
+   const entry = data[latestkey]
 
   dataContainer.innerHTML = `
-  <span>${data.date}</span>
-  <span>${data.time}</span>
-  <span>${data.depth1}</span>
-  <span>${data.temp1}</span>
-  <span>${data.depth2}</span>
-  <span>${data.temp2}</span>
+  <span>${entry.date}</span>
+  <span>${entry.time}</span>
+  <span>${entry.depth1}</span>
+  <span>${entry.temp1}</span>
+  <span>${entry.depth2}</span>
+  <span>${entry.temp2}</span>
     <hr>
   `;
   document.getElementById('dashboard').appendChild(dataContainer);
