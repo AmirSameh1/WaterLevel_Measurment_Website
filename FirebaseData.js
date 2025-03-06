@@ -68,6 +68,8 @@ onValue(dataRef, (snapshot) => {
       dataContainer1.innerHTML = `
       <div class="bar" style="height: ${entry.depth1}px;"></div>
       `;
+      if (dataContainer1.children.length > 15) {
+                container.removeChild(container.lastChild);
       document.getElementById('depth1-graph').prepend(dataContainer1);
 
       const dataContainer2 = document.createElement('div');
@@ -76,6 +78,8 @@ onValue(dataRef, (snapshot) => {
       dataContainer2.innerHTML = `
       <div class="bar" style="height: ${entry.depth2}px;"></div>
       `;
+         if (dataContainer2.children.length > 15) {
+                container.removeChild(container.lastChild);
       document.getElementById('depth2-graph').prepend(dataContainer2);
 
 
@@ -85,6 +89,8 @@ onValue(dataRef, (snapshot) => {
       dataContainer3.innerHTML = `
       <div class="bar" style="height: ${(entry.temp1)*2} px;"></div>
       `;
+            if (dataContainer3.children.length > 15) {
+                container.removeChild(container.lastChild);
       document.getElementById('temp1-graph').prepend(dataContainer3);
 
 
@@ -94,6 +100,8 @@ onValue(dataRef, (snapshot) => {
       dataContainer4.innerHTML = `
       <div class="bar" style="height: ${(entry.temp2)*2}px;"></div>
       `;
+               if (dataContainer4.children.length > 15) {
+                container.removeChild(container.lastChild);
       document.getElementById('temp2-graph').prepend(dataContainer4);
 
     }
