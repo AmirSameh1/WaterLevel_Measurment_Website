@@ -87,7 +87,7 @@ onValue(dataRef, (snapshot) => {
       dataContainer3.className = 'bar';  // Set the class to "bar"
       
       dataContainer3.innerHTML = `
-      <div class="bar" style="height: ${(entry.temp1)*2} px;"></div>
+      <div class="bar" style="height: ${(entry.temp1)*2.5} px;"></div>
       `;
             if (dataContainer3.children.length > 15) {
                 container.removeChild(container.lastChild);
@@ -98,7 +98,7 @@ onValue(dataRef, (snapshot) => {
       dataContainer4.className = 'bar';  // Set the class to "bar"
       
       dataContainer4.innerHTML = `
-      <div class="bar" style="height: ${(entry.temp2)*2}px;"></div>
+      <div class="bar" style="height: ${(entry.temp2)*2.5}px;"></div>
       `;
                if (dataContainer4.children.length > 15) {
                 container.removeChild(container.lastChild);
