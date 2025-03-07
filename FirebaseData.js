@@ -72,6 +72,18 @@ onValue(dataRef, (snapshot) => {
       document.getElementById('depth1-graph').prepend(dataContainer1);
        if (document.getElementById('depth1-graph').children.length > 15) {
                 container.removeChild(container.lastChild);}
+  
+  dataContainer1.onmouseover = function(event) {
+  dataContainer1.style.display = "block";
+  dataContainer1.innerText = ` date:${entry.date} \n time:${entry.time} \n depth:${entry.depth1*2}`; // You can change this dynamically
+  dataContainer1.style.left = event.pageX + "px";
+  dataContainer1.style.top = event.pageY + "px";
+};
+      
+
+hoverElement.onmouseout = function() {
+  hoverData.style.display = "none";
+};
 
       const dataContainer2 = document.createElement('div');
       dataContainer2.className = 'bar';  // Set the class to "bar"
@@ -85,6 +97,12 @@ onValue(dataRef, (snapshot) => {
                 container.removeChild(container.lastChild);
               }
 
+       dataContainer2.onmouseover = function(event) {
+  dataContainer2.style.display = "block";
+  dataContainer2.innerText = ` date:${entry.date} \n time:${entry.time} \n depth:${entry.depth1*2}`; // You can change this dynamically
+  dataContainer2.style.left = event.pageX + "px";
+  dataContainer2.style.top = event.pageY + "px";
+
       const dataContainer3 = document.createElement('div');
       dataContainer3.className = 'bar';  // Set the class to "bar"
       
@@ -96,6 +114,13 @@ onValue(dataRef, (snapshot) => {
 if (document.getElementById('temp1-graph').children.length > 15) {
                 container.removeChild(container.lastChild);}
 
+ dataContainer3.onmouseover = function(event) {
+  dataContainer3.style.display = "block";
+  dataContainer3.innerText = ` date:${entry.date} \n time:${entry.time} \n depth:${entry.depth1*2}`; // You can change this dynamically
+  dataContainer3.style.left = event.pageX + "px";
+  dataContainer3.style.top = event.pageY + "px";
+         
+         
       const dataContainer4 = document.createElement('div');
       dataContainer4.className = 'bar';  // Set the class to "bar"
       
@@ -108,6 +133,13 @@ if (document.getElementById('temp1-graph').children.length > 15) {
                 container.removeChild(container.lastChild);}
 
     }
+ dataContainer4.onmouseover = function(event) {
+  dataContainer4.style.display = "block";
+  dataContainer4.innerText = ` date:${entry.date} \n time:${entry.time} \n depth:${entry.depth1*2}`; // You can change this dynamically
+  dataContainer4.style.left = event.pageX + "px";
+  dataContainer4.style.top = event.pageY + "px";
+
+         
   });
 
 
@@ -143,6 +175,12 @@ onChildAdded(dataRef, (snapshot) => {
   if (document.getElementById('depth1-graph').children.length > 15) {
         container.removeChild(container.lastChild);}
 
+   dataContainer1.onmouseover = function(event) {
+  dataContainer1.style.display = "block";
+  dataContainer1.innerText = ` date:${entry.date} \n time:${entry.time} \n depth:${entry.depth1*2}`; // You can change this dynamically
+  dataContainer1.style.left = event.pageX + "px";
+  dataContainer1.style.top = event.pageY + "px";
+
       const dataContainer2 = document.createElement('div');
       dataContainer2.className = 'bar';  // Set the class to "bar"
       
@@ -153,6 +191,12 @@ onChildAdded(dataRef, (snapshot) => {
       document.getElementById('depth2-graph').prepend(dataContainer2);
    if (document.getElementById('depth2-graph').children.length > 15) {
         container.removeChild(container.lastChild);}
+
+      dataContainer2.onmouseover = function(event) {
+  dataContainer2.style.display = "block";
+  dataContainer2.innerText = ` date:${entry.date} \n time:${entry.time} \n depth:${entry.depth1*2}`; // You can change this dynamically
+  dataContainer2.style.left = event.pageX + "px";
+  dataContainer2.style.top = event.pageY + "px";
 
 
       const dataContainer3 = document.createElement('div');
@@ -165,7 +209,11 @@ onChildAdded(dataRef, (snapshot) => {
       if (document.getElementById('temp1-graph').children.length > 15) {
         container.removeChild(container.lastChild);}
      
-
+ dataContainer3.onmouseover = function(event) {
+  dataContainer3.style.display = "block";
+  dataContainer3.innerText = ` date:${entry.date} \n time:${entry.time} \n depth:${entry.depth1*2}`; // You can change this dynamically
+  dataContainer3.style.left = event.pageX + "px";
+  dataContainer3.style.top = event.pageY + "px";
 
       const dataContainer4 = document.createElement('div');
       dataContainer4.className = 'bar';  // Set the class to "bar"
@@ -178,7 +226,12 @@ onChildAdded(dataRef, (snapshot) => {
 
        if (document.getElementById('temp2-graph').children.length > 15) {
         container.removeChild(container.lastChild);}
-
+   
+ dataContainer4.onmouseover = function(event) {
+  dataContainer4.style.display = "block";
+  dataContainer4.innerText = ` date:${entry.date} \n time:${entry.time} \n depth:${entry.depth1*2}`; // You can change this dynamically
+  dataContainer4.style.left = event.pageX + "px";
+  dataContainer4.style.top = event.pageY + "px";
 
 
 });
