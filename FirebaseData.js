@@ -66,44 +66,46 @@ onValue(dataRef, (snapshot) => {
       dataContainer1.className = 'bar';  // Set the class to "bar"
       
       dataContainer1.innerHTML = `
-      <div class="bar" style="height: ${entry.depth1}px;"></div>
+      <div class="bar" style="height: ${entry.depth1*2}px;"></div>
       `;
-      if (document.getElementById('depth1-graph').children.length > 15) {
-                container.removeChild(container.lastChild);}
+     
       document.getElementById('depth1-graph').prepend(dataContainer1);
+       if (document.getElementById('depth1-graph').children.length > 15) {
+                container.removeChild(container.lastChild);}
 
       const dataContainer2 = document.createElement('div');
       dataContainer2.className = 'bar';  // Set the class to "bar"
       
       dataContainer2.innerHTML = `
-      <div class="bar" style="height: ${entry.depth2}px;"></div>
+      <div class="bar" style="height: ${entry.depth2*2}px;"></div>
       `;
-         if (document.getElementById('depth2-graph').children.length > 15) {
+        
+      document.getElementById('depth2-graph').prepend(dataContainer2);
+ if (document.getElementById('depth2-graph').children.length > 15) {
                 container.removeChild(container.lastChild);
               }
-      document.getElementById('depth2-graph').prepend(dataContainer2);
-
 
       const dataContainer3 = document.createElement('div');
       dataContainer3.className = 'bar';  // Set the class to "bar"
       
       dataContainer3.innerHTML = `
-      <div class="bar" style="height: ${(entry.temp1)*2.5} px;"></div>
+      <div class="bar" style="height: ${(entry.temp1)*5} px;"></div>
       `;
-            if (document.getElementById('temp1-graph').children.length > 15) {
-                container.removeChild(container.lastChild);}
+            
       document.getElementById('temp1-graph').prepend(dataContainer3);
-
+if (document.getElementById('temp1-graph').children.length > 15) {
+                container.removeChild(container.lastChild);}
 
       const dataContainer4 = document.createElement('div');
       dataContainer4.className = 'bar';  // Set the class to "bar"
       
       dataContainer4.innerHTML = `
-      <div class="bar" style="height: ${(entry.temp2)*2.5}px;"></div>
+      <div class="bar" style="height: ${(entry.temp2)*5}px;"></div>
       `;
-               if (document.getElementById('temp2-graph').children.length > 15) {
-                container.removeChild(container.lastChild);}
+
       document.getElementById('temp2-graph').prepend(dataContainer4);
+                     if (document.getElementById('temp2-graph').children.length > 15) {
+                container.removeChild(container.lastChild);}
 
     }
   });
@@ -134,43 +136,48 @@ onChildAdded(dataRef, (snapshot) => {
       dataContainer1.className = 'bar';  // Set the class to "bar"
       
       dataContainer1.innerHTML = `
-      <div class="bar" style="height: ${entry.depth1}px;"></div>
+      <div class="bar" style="height: ${entry.depth1*2}px;"></div>
       `;
-      if (document.getElementById('depth1-graph').children.length > 15) {
-        container.removeChild(container.lastChild);}
+      
       document.getElementById('depth1-graph').prepend(dataContainer1);
+  if (document.getElementById('depth1-graph').children.length > 15) {
+        container.removeChild(container.lastChild);}
 
       const dataContainer2 = document.createElement('div');
       dataContainer2.className = 'bar';  // Set the class to "bar"
       
       dataContainer2.innerHTML = `
-      <div class="bar" style="height: ${entry.depth2}px;"></div>
+      <div class="bar" style="height: ${entry.depth2*2}px;"></div>
       `;
-      if (document.getElementById('depth2-graph').children.length > 15) {
-        container.removeChild(container.lastChild);}
+     
       document.getElementById('depth2-graph').prepend(dataContainer2);
+   if (document.getElementById('depth2-graph').children.length > 15) {
+        container.removeChild(container.lastChild);}
 
 
       const dataContainer3 = document.createElement('div');
       dataContainer3.className = 'bar';  // Set the class to "bar"
       
       dataContainer3.innerHTML = `
-      <div class="bar" style="height: ${(entry.temp1)*2} px;"></div>
+      <div class="bar" style="height: ${(entry.temp1)*5} px;"></div>
       `;
+   document.getElementById('temp1-graph').prepend(dataContainer3);
       if (document.getElementById('temp1-graph').children.length > 15) {
         container.removeChild(container.lastChild);}
-      document.getElementById('temp1-graph').prepend(dataContainer3);
+     
 
 
       const dataContainer4 = document.createElement('div');
       dataContainer4.className = 'bar';  // Set the class to "bar"
       
       dataContainer4.innerHTML = `
-      <div class="bar" style="height: ${(entry.temp2)*2}px;"></div>
+      <div class="bar" style="height: ${(entry.temp2)*5}px;"></div>
       `;
-      if (document.getElementById('temp2-graph').children.length > 15) {
-        container.removeChild(container.lastChild);}
+ 
       document.getElementById('temp2-graph').prepend(dataContainer4);
+
+       if (document.getElementById('temp2-graph').children.length > 15) {
+        container.removeChild(container.lastChild);}
 
 
 
