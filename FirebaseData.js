@@ -46,7 +46,7 @@ onValue(dataRef, (snapshot) => {
     document.getElementById('dashboard').innerHTML = '';
     
     // Loop through the data and create elements for each entry
-    for (const key in data) {
+    for (const key in data) {   
       const entry = data[key];
       const dataContainer = document.createElement('div');
       dataContainer.className = 'data-row';  // Set the class to "data-row"
@@ -71,7 +71,7 @@ onValue(dataRef, (snapshot) => {
      
       document.getElementById('depth1-graph').prepend(dataContainer1);
        if (document.getElementById('depth1-graph').children.length > 15) {
-                container.removeChild(container.lastChild);}
+        document.getElementById('depth1-graph').removeChild(container.lastChild);}
   
   dataContainer1.onmouseover = function(event) {
   dataContainer1.style.display = "block";
@@ -93,7 +93,7 @@ dataContainer1.onmouseout = function() {
         
       document.getElementById('depth2-graph').prepend(dataContainer2);
  if (document.getElementById('depth2-graph').children.length > 15) {
-                container.removeChild(container.lastChild);
+  document.getElementById('depth2-graph').removeChild(container.lastChild);
               }
 
               dataContainer2.onmouseover = function(event) {
@@ -116,7 +116,7 @@ dataContainer1.onmouseout = function() {
             
       document.getElementById('temp1-graph').prepend(dataContainer3);
 if (document.getElementById('temp1-graph').children.length > 15) {
-                container.removeChild(container.lastChild);}
+  document.getElementById('temp1-graph').removeChild(container.lastChild);}
 
                 dataContainer3.onmouseover = function(event) {
                   dataContainer3.style.display = "block";
@@ -139,7 +139,7 @@ if (document.getElementById('temp1-graph').children.length > 15) {
 
       document.getElementById('temp2-graph').prepend(dataContainer4);
                      if (document.getElementById('temp2-graph').children.length > 15) {
-                container.removeChild(container.lastChild);}
+                      document.getElementById('temp2-graph').removeChild(container.lastChild);}
 
     }
     dataContainer4.onmouseover = function(event) {
@@ -188,7 +188,7 @@ onChildAdded(dataRef, (snapshot) => {
       
       document.getElementById('depth1-graph').prepend(dataContainer1);
   if (document.getElementById('depth1-graph').children.length > 15) {
-        container.removeChild(container.lastChild);}
+    document.getElementById('depth1-graph').removeChild(container.lastChild);}
 
         dataContainer1.onmouseover = function(event) {
           dataContainer1.style.display = "block";
@@ -211,7 +211,7 @@ onChildAdded(dataRef, (snapshot) => {
      
       document.getElementById('depth2-graph').prepend(dataContainer2);
    if (document.getElementById('depth2-graph').children.length > 15) {
-        container.removeChild(container.lastChild);}
+    document.getElementById('depth2-graph').removeChild(container.lastChild);}
 
         dataContainer2.onmouseover = function(event) {
           dataContainer2.style.display = "block";
@@ -234,7 +234,7 @@ onChildAdded(dataRef, (snapshot) => {
       `;
    document.getElementById('temp1-graph').prepend(dataContainer3);
       if (document.getElementById('temp1-graph').children.length > 15) {
-        container.removeChild(container.lastChild);}
+        document.getElementById('temp1-graph').removeChild(container.lastChild);}
      
         dataContainer3.onmouseover = function(event) {
           dataContainer3.style.display = "block";
@@ -258,7 +258,7 @@ onChildAdded(dataRef, (snapshot) => {
       document.getElementById('temp2-graph').prepend(dataContainer4);
 
        if (document.getElementById('temp2-graph').children.length > 15) {
-        container.removeChild(container.lastChild);}
+        document.getElementById('temp2-graph').removeChild(container.lastChild);}
    
         dataContainer4.onmouseover = function(event) {
           dataContainer4.style.display = "block";
