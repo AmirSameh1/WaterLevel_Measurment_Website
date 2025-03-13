@@ -11,19 +11,14 @@ import { getDatabase, ref, onValue, onChildAdded } from "https://www.gstatic.com
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyC-D17GV3prkmQDssF9ZbXiKGQq2-XLsiE",
-
-  authDomain: "project-0-51c9c.firebaseapp.com",
-
-  databaseURL: "https://project-0-51c9c-default-rtdb.firebaseio.com",
-
-  projectId: "project-0-51c9c",
-
-  storageBucket: "project-0-51c9c.firebasestorage.app",
-
-  messagingSenderId: "486817466192",
-
-  appId: "1:486817466192:web:108b7eadfc3b6fe3604e55"
+  apiKey: "AIzaSyClMKnJj5AMrkzfJscHRBwRyXXsRQUzUaU",
+  authDomain: "water-level-sensor-data-78d28.firebaseapp.com",
+  databaseURL: "https://water-level-sensor-data-78d28-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "water-level-sensor-data-78d28",
+  storageBucket: "water-level-sensor-data-78d28.firebasestorage.app",
+  messagingSenderId: "442646995845",
+  appId: "1:442646995845:web:9309293caa66d25a29daec",
+  measurementId: "G-7QT1V26PK5"
 
 
 };
