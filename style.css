@@ -15,15 +15,22 @@ body {
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     overflow-y: auto;
 }
+.hoverbar{
+    text-align: center;
+    color: #ffb803;
+    font-size:small;
+    background: none;
+    border:none;
+    margin-right:50av;
+
+}
 .name {
     text-align: center;
-    color:#ffffff;
-    border:#ffffff;
-    background: #1e1e1e;
-    border-radius: 2px;
+    color: #ffb803;
     font-size:small;
-    width:50px;
-    height:50px;
+    background: none;
+    border:none;
+    margin-right:50av;
 }
 .categories {
     width: 90%;
