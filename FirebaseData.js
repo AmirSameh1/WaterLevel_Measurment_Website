@@ -77,14 +77,16 @@ onValue(dataRef, (snapshot) => {
         }
   
   dataContainer1.onmouseover = function(event) {
-  dataContainer1.style.display = "block";
-  dataContainer1.innerText = ` date:${entry.date} \n time:${entry.time} \n depth:${entry.depth1*2}`; // You can change this dynamically
-  dataContainer1.style.left = event.pageX + "px";
-  dataContainer1.style.top = event.pageY + "px";
+    const hoverbar = document.createElement('div');
+    hoverbar.className = 'hoverbar';  // Set the class to "bar"
+  
+   hoverbar.innerText = ` date:${entry.date} \n time:${entry.time} \n depth:${entry.depth1*2}`; // You can change this dynamically
+   dataContainer1.style.left = event.pageX + "px";
+   dataContainer1.style.top = event.pageY + "px";
 };
       
 dataContainer1.onmouseout = function() {
-  dataContainer1.style.display = "none";
+  hoverbar.style.display = "none";
 };
 
       const dataContainer2 = document.createElement('div');
