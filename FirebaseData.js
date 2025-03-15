@@ -9,7 +9,7 @@ import { getDatabase, ref, onValue, onChildAdded } from "https://www.gstatic.com
 
 // Your web app's Firebase configuration
 
-const firebaseConfig = {
+const firebaseConfig = {  
 
 apiKey: "AIzaSyC-D17GV3prkmQDssF9ZbXiKGQq2-XLsiE",
 
