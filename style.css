@@ -15,15 +15,6 @@ body {
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     overflow-y: auto;
 }
-.hoverbar{
-    text-align: center;
-    color: #ffb803;
-    font-size:small;
-    background: none;
-    border:none;
-    margin-right:50av;
-
-}
 .name {
     text-align: center;
     color:#ffffff;
