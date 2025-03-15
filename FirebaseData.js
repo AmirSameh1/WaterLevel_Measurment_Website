@@ -73,7 +73,7 @@ onValue(dataRef, (snapshot) => {
      
       document.getElementById('depth1-graph').prepend(dataContainer1);
        if (document.getElementById('depth1-graph').children.length > 15) {
-        //document.getElementById('depth1-graph').removeChild(container.lastChild);
+        document.getElementById('depth1-graph').removeChild(document.getElementById('depth1-graph').lastChild);
         }
   
   dataContainer1.onmouseover = function(event) {
@@ -96,7 +96,7 @@ dataContainer1.onmouseout = function() {
         
       document.getElementById('depth2-graph').prepend(dataContainer2);
  if (document.getElementById('depth2-graph').children.length > 15) {
-  //document.getElementById('depth2-graph').removeChild(container.lastChild);
+  document.getElementById('depth2-graph').removeChild(document.getElementById('depth2-graph').lastChild);
               }
 
               dataContainer2.onmouseover = function(event) {
@@ -119,7 +119,7 @@ dataContainer1.onmouseout = function() {
             
       document.getElementById('temp1-graph').prepend(dataContainer3);
 if (document.getElementById('temp1-graph').children.length > 15) {
-  //document.getElementById('temp1-graph').removeChild(container.lastChild);
+  document.getElementById('temp1-graph').removeChild(document.getElementById('temp1-graph').lastChild);
   }
 
                 dataContainer3.onmouseover = function(event) {
@@ -143,7 +143,7 @@ if (document.getElementById('temp1-graph').children.length > 15) {
 
       document.getElementById('temp2-graph').prepend(dataContainer4);
                      if (document.getElementById('temp2-graph').children.length > 15) {
-                     // document.getElementById('temp2-graph').removeChild(container.lastChild);
+                     document.getElementById('temp2-graph').removeChild(document.getElementById('temp2-graph').lastChild);
                      }
 
     }
@@ -193,7 +193,7 @@ onChildAdded(dataRef, (snapshot) => {
       
       document.getElementById('depth1-graph').prepend(dataContainer1);
   if (document.getElementById('depth1-graph').children.length > 15) {
-   // document.getElementById('depth1-graph').removeChild(container.lastChild);
+    document.getElementById('depth1-graph').removeChild(document.getElementById('depth1-graph').lastChild);
    }
 
         dataContainer1.onmouseover = function(event) {
@@ -217,7 +217,7 @@ onChildAdded(dataRef, (snapshot) => {
      
       document.getElementById('depth2-graph').prepend(dataContainer2);
    if (document.getElementById('depth2-graph').children.length > 15) {
-    //document.getElementById('depth2-graph').removeChild(container.lastChild);
+    document.getElementById('depth2-graph').removeChild(document.getElementById('depth2-graph').lastChild);
     }
 
         dataContainer2.onmouseover = function(event) {
@@ -241,7 +241,7 @@ onChildAdded(dataRef, (snapshot) => {
       `;
    document.getElementById('temp1-graph').prepend(dataContainer3);
       if (document.getElementById('temp1-graph').children.length > 15) {
-      //  document.getElementById('temp1-graph').removeChild(container.lastChild);
+       document.getElementById('temp1-graph').removeChild(document.getElementById('temp1-graph').lastChild);
       }
      
         dataContainer3.onmouseover = function(event) {
@@ -266,7 +266,7 @@ onChildAdded(dataRef, (snapshot) => {
       document.getElementById('temp2-graph').prepend(dataContainer4);
 
        if (document.getElementById('temp2-graph').children.length > 15) {
-       // document.getElementById('temp2-graph').removeChild(container.lastChild);
+       document.getElementById('temp2-graph').removeChild(document.getElementById('temp2-graph').lastChild);
        }
    
         dataContainer4.onmouseover = function(event) {
