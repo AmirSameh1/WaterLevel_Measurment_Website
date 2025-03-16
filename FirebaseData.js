@@ -94,7 +94,7 @@ onValue(dataRef, (snapshot) => {
       dataContainer3.className = 'bar';  // Set the class to "bar"
       
       dataContainer3.innerHTML = `
-      <div class="bar" style="height: ${(entry.temp1)*5}px;">${(entry.temp1)}</div>
+      <div class="bar" style="height: ${(entry.temp1)*5}px;">${(entry.temp1)}°C</div>
       `;
             
       document.getElementById('temp1-graph').prepend(dataContainer3);
@@ -109,7 +109,7 @@ if (document.getElementById('temp1-graph').children.length > 15) {
       dataContainer4.className = 'bar';  // Set the class to "bar"
       
       dataContainer4.innerHTML = `
-      <div class="bar" style="height: ${(entry.temp2)*5}px;">${(entry.temp2)}</div>
+      <div class="bar" style="height: ${(entry.temp2)*5}px;">${(entry.temp2)}°C</div>
       `;
 
       document.getElementById('temp2-graph').prepend(dataContainer4);
@@ -181,7 +181,7 @@ onChildAdded(dataRef, (snapshot) => {
       dataContainer3.className = 'bar';  // Set the class to "bar"
       
       dataContainer3.innerHTML = `
-      <div class="bar" style="height: ${(entry.temp1)*5}px;">${(entry.temp1)}</div>
+      <div class="bar" style="height: ${(entry.temp1)*5}px;">${(entry.temp1)}°C</div>
       `;
    document.getElementById('temp1-graph').prepend(dataContainer3);
       if (document.getElementById('temp1-graph').children.length > 15) {
@@ -194,7 +194,7 @@ onChildAdded(dataRef, (snapshot) => {
       dataContainer4.className = 'bar';  // Set the class to "bar"
       
       dataContainer4.innerHTML = `
-      <div class="bar" style="height: ${(entry.temp2)*5}px;">${(entry.temp2)}</div>
+      <div class="bar" style="height: ${(entry.temp2)*5}px;">${(entry.temp2)}°C</div>
       `;
  
       document.getElementById('temp2-graph').prepend(dataContainer4);
