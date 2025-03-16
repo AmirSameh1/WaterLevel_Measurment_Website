@@ -126,6 +126,8 @@ margin-right:11vw;
     background-color: #ff8c00;
     margin: 0 3px;
     transition: all 0.3s ease;
+    color:black;
+    text-align: center;
 }
 
 .bar:hover {
