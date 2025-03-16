@@ -68,7 +68,7 @@ onValue(dataRef, (snapshot) => {
       dataContainer1.className = 'bar';  // Set the class to "bar"
       
       dataContainer1.innerHTML = `
-      <div class="bar" style="height: ${entry.depth1*2}px;"></div>
+      <div class="bar" style="height: ${entry.depth1*2}px;">${entry.time} </div>
       `;
      
       document.getElementById('depth1-graph').prepend(dataContainer1);
