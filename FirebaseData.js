@@ -59,7 +59,6 @@ onValue(dataRef, (snapshot) => {
       <span>${entry.depth1}</span>
       <span>${entry.temp1}</span>
       <span>${entry.depth2}</span>
-      <span>${entry.temp2}</span>
       `;
       document.getElementById('dashboard').prepend(dataContainer);
 
@@ -140,7 +139,6 @@ onChildAdded(dataRef, (snapshot) => {
   <span>${entry.depth1}</span>
   <span>${entry.temp1}</span>
   <span>${entry.depth2}</span>
-  <span>${entry.temp2}</span>
   `;
   document.getElementById('dashboard').prepend(dataContainer);
 
