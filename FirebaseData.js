@@ -13,15 +13,15 @@ const firebaseConfig = {
 
 apiKey: "API",
 
-  authDomain: "Auth_domain",
+  authDomain: "AUTH_DOMAIN",
 
   databaseURL: "URL",
 
-  projectId: "prj_id",
+  projectId: "PRJ_ID",
 
-  storageBucket: "bucket",
+  storageBucket: "BUCKET",
 
-  messagingSenderId: "msg_id",
+  messagingSenderId: "MSG_ID",
 
   appId: "ID"
 
