@@ -1,0 +1,27 @@
+name: Database secrets
+
+on: [push]
+
+jobs:
+  run-js:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run JS file with env variable
+        run: Firebase.js
+        env:
+          API: ${{ secrets.API }}
+AUTH_DOMAIN: ${{ secrets.AUTH_DOMAIN }}
+DATABASE_URL: ${{ secrets.URL }}
+ID: ${{ secrets.ID }}
+PRJ_ID: ${{ secrets.PRJ_ID }}
+MSG_ID: ${{ secrets.API }}
+BUCKET: ${{ secrets.BUCKET }}
+
+
+
+
+
+
