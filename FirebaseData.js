@@ -11,19 +11,19 @@ import { getDatabase, ref, onValue, onChildAdded } from "https://www.gstatic.com
 
 const firebaseConfig = {  
 
-apiKey: "AIzaSyC-D17GV3prkmQDssF9ZbXiKGQq2-XLsiE",
+apiKey: "API",
 
-  authDomain: "project-0-51c9c.firebaseapp.com",
+  authDomain: "Auth_domain",
 
-  databaseURL: "https://project-0-51c9c-default-rtdb.firebaseio.com",
+  databaseURL: "URL",
 
-  projectId: "project-0-51c9c",
+  projectId: "prj_id",
 
-  storageBucket: "project-0-51c9c.firebasestorage.app",
+  storageBucket: "bucket",
 
-  messagingSenderId: "486817466192",
+  messagingSenderId: "msg_id",
 
-  appId: "1:486817466192:web:108b7eadfc3b6fe3604e55"
+  appId: "ID"
 
 
 
