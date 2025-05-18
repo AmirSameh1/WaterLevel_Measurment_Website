@@ -15,7 +15,7 @@ apiKey: "API",
 
   authDomain: "AUTH_DOMAIN",
 
-  databaseURL: "URL",
+  databaseURL: "DATABASE_URL",
 
   projectId: "PRJ_ID",
 
