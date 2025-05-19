@@ -14,16 +14,17 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Replace placeholder with Firebase config
-        run: |
-          FIREBASE_CONFIG="const firebaseConfig = {
-            apiKey: '${{ secrets.API }}',
-            authDomain: '${{ secrets.AUTH_DOMAIN }}',
-            databaseURL: '${{ secrets.DATAABASE_URL }}',
-            projectId: '${{ secrets.PRJ_ID }}',
-            storageBucket: '${{ secrets.BUCKET }}',
-            messagingSenderId: '${{ secrets.MSG_ID }}',
-            appId: '${{ secrets.ID }}'
-          };"
+  run: |
+    sed -i "/const firebaseConfig = __FIREBASE_CONFIG__;/c\const firebaseConfig = {" FirebaseData.js
+    echo "  apiKey: '${{ secrets.API }}'," >> FirebaseData.js
+    echo "  authDomain: '${{ secrets.AUTH_DOMAIN }}'," >> FirebaseData.js
+    echo "  databaseURL: '${{ secrets.URL }}'," >> FirebaseData.js
+    echo "  projectId: '${{ secrets.PRJ_ID }}'," >> FirebaseData.js
+    echo "  storageBucket: '${{ secrets.BUCKET }}'," >> FirebaseData.js
+    echo "  messagingSenderId: '${{ secrets.MSG_ID }}'," >> FirebaseData.js
+    echo "  appId: '${{ secrets.ID }}'" >> FirebaseData.js
+    echo "};" >> FirebaseData.js
+
 
           # Replace the line in FirebaseData.js
           sed -i "s|const firebaseConfig = __FIREBASE_CONFIG__;|$FIREBASE_CONFIG|" FirebaseData.js
