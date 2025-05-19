@@ -10,13 +10,6 @@ import { getDatabase, ref, onValue, onChildAdded } from "https://www.gstatic.com
 // Your web app's Firebase configuration
 
 const firebaseConfig = {  
-     apiKey: '${{ secrets.API }}',
-  authDomain: '${{ secrets.AUTH_DOMAIN }}',
-  databaseURL: '${{ secrets.URL }}',
-  projectId: '${{ secrets.PRJ_ID }}',
-  storageBucket: '${{ secrets.BUCKET }}',
-  messagingSenderId: '${{ secrets.MSG_ID }}',
-  appId: '${{ secrets.ID }}'
 };
 
 
