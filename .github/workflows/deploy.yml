@@ -1,5 +1,6 @@
-- name: Update firebaseConfig in FirebaseData.js
+- name: Inject Firebase config into FirebaseData.js
   run: |
+    echo "Writing new config block..."
     cat > new_config.js <<EOF
 const firebaseConfig = {
   apiKey: '${{ secrets.API }}',
@@ -12,9 +13,21 @@ const firebaseConfig = {
 };
 EOF
 
+    echo "Replacing config block in FirebaseData.js..."
+
     awk '
       BEGIN {inside=0}
-      /const firebaseConfig = {/ {print ""; print ""; system("cat new_config.js"); inside=1; next}
-      /^};/ && inside {inside=0; next}
+      /^\s*const firebaseConfig\s*=\s*{\s*$/ {    # match even if spaces vary
+        system("cat new_config.js");
+        inside=1;
+        next
+      }
+      /^\s*};\s*$/ && inside {
+        inside=0;
+        next
+      }
       !inside {print}
     ' FirebaseData.js > FirebaseData.tmp && mv FirebaseData.tmp FirebaseData.js
+
+    echo "New FirebaseData.js contents:"
+    cat FirebaseData.js
