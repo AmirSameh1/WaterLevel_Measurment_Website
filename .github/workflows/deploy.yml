@@ -1,7 +1,22 @@
-- name: Inject Firebase config into FirebaseData.js
-  run: |
-    echo "Writing new config block..."
-    cat > new_config.js <<EOF
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # or your default branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Inject Firebase config into FirebaseData.js
+        run: |
+          echo "Writing new config block..."
+          cat > new_config.js <<EOF
 const firebaseConfig = {
   apiKey: '${{ secrets.API }}',
   authDomain: '${{ secrets.AUTH_DOMAIN }}',
@@ -13,21 +28,27 @@ const firebaseConfig = {
 };
 EOF
 
-    echo "Replacing config block in FirebaseData.js..."
+          echo "Replacing config block in FirebaseData.js..."
 
-    awk '
-      BEGIN {inside=0}
-      /^\s*const firebaseConfig\s*=\s*{\s*$/ {    # match even if spaces vary
-        system("cat new_config.js");
-        inside=1;
-        next
-      }
-      /^\s*};\s*$/ && inside {
-        inside=0;
-        next
-      }
-      !inside {print}
-    ' FirebaseData.js > FirebaseData.tmp && mv FirebaseData.tmp FirebaseData.js
+          awk '
+            BEGIN {inside=0}
+            /^\s*const firebaseConfig\s*=\s*{\s*$/ {
+              system("cat new_config.js");
+              inside=1;
+              next
+            }
+            /^\s*};\s*$/ && inside {
+              inside=0;
+              next
+            }
+            !inside {print}
+          ' FirebaseData.js > FirebaseData.tmp && mv FirebaseData.tmp FirebaseData.js
 
-    echo "New FirebaseData.js contents:"
-    cat FirebaseData.js
+          echo "Updated FirebaseData.js:"
+          cat FirebaseData.js
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .  # This assumes index.html is in root
