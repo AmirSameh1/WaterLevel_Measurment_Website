@@ -1,4 +1,4 @@
-name: Build & Deploy to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -6,16 +6,16 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Inject Firebase Config
+      - name: Update firebaseConfig in FirebaseData.js
         run: |
-          echo "const firebaseConfig = {
+          CONFIG_BLOCK="const firebaseConfig = {
             apiKey: '${{ secrets.API }}',
             authDomain: '${{ secrets.AUTH_DOMAIN }}',
             databaseURL: '${{ secrets.URL }}',
@@ -23,7 +23,9 @@ jobs:
             storageBucket: '${{ secrets.BUCKET }}',
             messagingSenderId: '${{ secrets.MSG_ID }}',
             appId: '${{ secrets.ID }}'
-          };" > FirebaseData.js
+          };"
+
+          sed -i "/const firebaseConfig = {/,/^};/c\\$CONFIG_BLOCK" FirebaseData.js
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
