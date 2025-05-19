@@ -1,34 +1,54 @@
-name: Build and Deploy
+name: Deploy to GitHub Pages
+
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main  # or your default branch
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          
-      - name: Install dependencies
-        run: npm ci
-        
-      - name: Build with environment variables
-        env:
-          API: ${{ secrets.API }}
-          AUTH_DOMAIN: ${{ secrets.AUTH_DOMAIN }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          PRJ_ID: ${{ secrets.PRJ_ID }}
-          BUCKET: ${{ secrets.BUCKET }}
-          MSG_ID: ${{ secrets.MSG_ID }}
-          ID: ${{ secrets.ID }}
-        run: npm run build
-        
+
+      - name: Inject Firebase config into FirebaseData.js
+        run: |
+          echo "Writing new config block..."
+          cat > new_config.js <<EOF
+const firebaseConfig = {
+  apiKey: '${{ secrets.API }}',
+  authDomain: '${{ secrets.AUTH_DOMAIN }}',
+  databaseURL: '${{ secrets.DATABASE_URL }}',
+  projectId: '${{ secrets.PRJ_ID }}',
+  storageBucket: '${{ secrets.BUCKET }}',
+  messagingSenderId: '${{ secrets.MSG_ID }}',
+  appId: '${{ secrets.ID }}'
+};
+EOF
+
+          echo "Replacing config block in FirebaseData.js..."
+
+          awk '
+            BEGIN {inside=0}
+            /^\s*const firebaseConfig\s*=\s*{\s*$/ {
+              system("cat new_config.js");
+              inside=1;
+              next
+            }
+            /^\s*};\s*$/ && inside {
+              inside=0;
+              next
+            }
+            !inside {print}
+          ' FirebaseData.js > FirebaseData.tmp && mv FirebaseData.tmp FirebaseData.js
+
+          echo "Updated FirebaseData.js:"
+          cat FirebaseData.js
+
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          folder: dist
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .  # This assumes index.html is in root
