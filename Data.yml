@@ -23,7 +23,7 @@ jobs:
             storageBucket: '${{ secrets.BUCKET }}',
             messagingSenderId: '${{ secrets.MSG_ID }}',
             appId: '${{ secrets.ID }}'
-          };" > js/firebase-config.js
+          };" > FirebaseData.js
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
