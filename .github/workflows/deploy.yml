@@ -18,7 +18,7 @@ jobs:
           FIREBASE_CONFIG="const firebaseConfig = {
             apiKey: '${{ secrets.API }}',
             authDomain: '${{ secrets.AUTH_DOMAIN }}',
-            databaseURL: '${{ secrets.URL }}',
+            databaseURL: '${{ secrets.DATAABASE_URL }}',
             projectId: '${{ secrets.PRJ_ID }}',
             storageBucket: '${{ secrets.BUCKET }}',
             messagingSenderId: '${{ secrets.MSG_ID }}',
