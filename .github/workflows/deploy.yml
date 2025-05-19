@@ -12,8 +12,9 @@ const firebaseConfig = {
 };
 EOF
 
-    # Replace firebaseConfig block in FirebaseData.js with the content of new_config.js
-    sed -i "/const firebaseConfig = {/,/^};/{
-      r new_config.js
-      d
-    }" FirebaseData.js
+    awk '
+      BEGIN {inside=0}
+      /const firebaseConfig = {/ {print ""; print ""; system("cat new_config.js"); inside=1; next}
+      /^};/ && inside {inside=0; next}
+      !inside {print}
+    ' FirebaseData.js > FirebaseData.tmp && mv FirebaseData.tmp FirebaseData.js
