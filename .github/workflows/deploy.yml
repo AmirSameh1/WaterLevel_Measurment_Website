@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Build and Deploy
 
 on:
   push:
@@ -6,49 +6,30 @@ on:
       - main  # or your default branch
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Inject Firebase config into FirebaseData.js
+      - name: Replace placeholder with Firebase config
         run: |
-          echo "Writing new config block..."
-          cat > new_config.js <<EOF
-const firebaseConfig = {
-  apiKey: '${{ secrets.API }}',
-  authDomain: '${{ secrets.AUTH_DOMAIN }}',
-  databaseURL: '${{ secrets.DATABASE_URL }}',
-  projectId: '${{ secrets.PRJ_ID }}',
-  storageBucket: '${{ secrets.BUCKET }}',
-  messagingSenderId: '${{ secrets.MSG_ID }}',
-  appId: '${{ secrets.ID }}'
-};
-EOF
+          FIREBASE_CONFIG="const firebaseConfig = {
+            apiKey: '${{ secrets.API }}',
+            authDomain: '${{ secrets.AUTH_DOMAIN }}',
+            databaseURL: '${{ secrets.URL }}',
+            projectId: '${{ secrets.PRJ_ID }}',
+            storageBucket: '${{ secrets.BUCKET }}',
+            messagingSenderId: '${{ secrets.MSG_ID }}',
+            appId: '${{ secrets.ID }}'
+          };"
 
-          echo "Replacing config block in FirebaseData.js..."
-
-          awk '
-            BEGIN {inside=0}
-            /^\s*const firebaseConfig\s*=\s*{\s*$/ {
-              system("cat new_config.js");
-              inside=1;
-              next
-            }
-            /^\s*};\s*$/ && inside {
-              inside=0;
-              next
-            }
-            !inside {print}
-          ' FirebaseData.js > FirebaseData.tmp && mv FirebaseData.tmp FirebaseData.js
-
-          echo "Updated FirebaseData.js:"
-          cat FirebaseData.js
+          # Replace the line in FirebaseData.js
+          sed -i "s|const firebaseConfig = __FIREBASE_CONFIG__;|$FIREBASE_CONFIG|" FirebaseData.js
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .  # This assumes index.html is in root
+          publish_dir: .  # if your index.html is in the root
