@@ -18,7 +18,7 @@ jobs:
     sed -i "/const firebaseConfig = __FIREBASE_CONFIG__;/c\const firebaseConfig = {" FirebaseData.js
     echo "  apiKey: '${{ secrets.API }}'," >> FirebaseData.js
     echo "  authDomain: '${{ secrets.AUTH_DOMAIN }}'," >> FirebaseData.js
-    echo "  databaseURL: '${{ secrets.URL }}'," >> FirebaseData.js
+    echo "  databaseURL: '${{ secrets.DATABASE_URL }}'," >> FirebaseData.js
     echo "  projectId: '${{ secrets.PRJ_ID }}'," >> FirebaseData.js
     echo "  storageBucket: '${{ secrets.BUCKET }}'," >> FirebaseData.js
     echo "  messagingSenderId: '${{ secrets.MSG_ID }}'," >> FirebaseData.js
