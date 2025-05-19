@@ -1,27 +1,32 @@
-name: Database secrets
+name: Build & Deploy to GitHub Pages
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  run-js:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Run JS file with env variable
-        run: FirebaseData.js
-        env:
-          API: ${{ secrets.API }}
-AUTH_DOMAIN: ${{ secrets.AUTH_DOMAIN }}
-DATABASE_URL: ${{ secrets.URL }}
-ID: ${{ secrets.ID }}
-PRJ_ID: ${{ secrets.PRJ_ID }}
-MSG_ID: ${{ secrets.API }}
-BUCKET: ${{ secrets.BUCKET }}
+      - name: Inject Firebase Config
+        run: |
+          echo "const firebaseConfig = {
+            apiKey: '${{ secrets.API }}',
+            authDomain: '${{ secrets.AUTH_DOMAIN }}',
+            databaseURL: '${{ secrets.URL }}',
+            projectId: '${{ secrets.PRJ_ID }}',
+            storageBucket: '${{ secrets.BUCKET }}',
+            messagingSenderId: '${{ secrets.MSG_ID }}',
+            appId: '${{ secrets.ID }}'
+          };" > js/firebase-config.js
 
-
-
-
-
-
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
