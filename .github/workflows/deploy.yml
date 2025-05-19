@@ -1,34 +1,19 @@
-name: Deploy to GitHub Pages
+- name: Update firebaseConfig in FirebaseData.js
+  run: |
+    cat > new_config.js <<EOF
+const firebaseConfig = {
+  apiKey: '${{ secrets.API }}',
+  authDomain: '${{ secrets.AUTH_DOMAIN }}',
+  databaseURL: '${{ secrets.URL }}',
+  projectId: '${{ secrets.PRJ_ID }}',
+  storageBucket: '${{ secrets.BUCKET }}',
+  messagingSenderId: '${{ secrets.MSG_ID }}',
+  appId: '${{ secrets.ID }}'
+};
+EOF
 
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Update firebaseConfig in FirebaseData.js
-        run: |
-          CONFIG_BLOCK="const firebaseConfig = {
-            apiKey: '${{ secrets.API }}',
-            authDomain: '${{ secrets.AUTH_DOMAIN }}',
-            databaseURL: '${{ secrets.URL }}',
-            projectId: '${{ secrets.PRJ_ID }}',
-            storageBucket: '${{ secrets.BUCKET }}',
-            messagingSenderId: '${{ secrets.MSG_ID }}',
-            appId: '${{ secrets.ID }}'
-          };"
-
-          sed -i "/const firebaseConfig = {/,/^};/c\\$CONFIG_BLOCK" FirebaseData.js
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+    # Replace firebaseConfig block in FirebaseData.js with the content of new_config.js
+    sed -i "/const firebaseConfig = {/,/^};/{
+      r new_config.js
+      d
+    }" FirebaseData.js
