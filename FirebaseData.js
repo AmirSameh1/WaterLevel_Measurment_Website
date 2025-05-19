@@ -9,8 +9,7 @@ import { getDatabase, ref, onValue, onChildAdded } from "https://www.gstatic.com
 
 // Your web app's Firebase configuration
 
-const firebaseConfig = {  
-};
+const firebaseConfig = __FIREBASE_CONFIG__;
 
 
 // Initialize Firebase
