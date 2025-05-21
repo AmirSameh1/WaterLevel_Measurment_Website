@@ -64,7 +64,7 @@ onValue(dataRef, (snapshot) => {
       dataContainer1.className = 'bar';  // Set the class to "bar"
       
       dataContainer1.innerHTML = `
-      <div class="bar" style="height: ${entry.depth1*2}px; width:30px;">${entry.depth1.toString().slice(0, 3)} </div>
+      <div class="bar" style="height: ${entry.depth1*2}px; width:30px;">${entry.depth1.toString().slice(0, 4)} </div>
       `;
      
       document.getElementById('depth1-graph').prepend(dataContainer1);
@@ -77,7 +77,7 @@ onValue(dataRef, (snapshot) => {
       dataContainer2.className = 'bar';  // Set the class to "bar"
       
       dataContainer2.innerHTML = `
-      <div class="bar" style="height: ${entry.depth2*2}px ;width:30px;">${entry.depth2.toString().slice(0, 3)}</div>
+      <div class="bar" style="height: ${entry.depth2*2}px ;width:30px;">${entry.depth2.toString().slice(0, 4)}</div>
       `;
         
       document.getElementById('depth2-graph').prepend(dataContainer2);
@@ -90,7 +90,7 @@ onValue(dataRef, (snapshot) => {
       dataContainer3.className = 'bar';  // Set the class to "bar"
       
       dataContainer3.innerHTML = `
-      <div class="bar" style="height: ${(entry.temp1)*5}px; width:30px;">${(entry.temp1.toString().slice(0, 4))}</div>
+      <div class="bar" style="height: ${(entry.temp1)*5}px; width:30px;">${(entry.temp1.toString().slice(0, 5))}</div>
       `;
             
       document.getElementById('temp1-graph').prepend(dataContainer3);
@@ -129,7 +129,7 @@ onChildAdded(dataRef, (snapshot) => {
       dataContainer1.className = 'bar';  // Set the class to "bar"
       
       dataContainer1.innerHTML = `
-      <div class="bar" style="height: ${entry.depth1*2}px;width:30px;">${entry.depth1.toString().slice(0, 3)}</div>
+      <div class="bar" style="height: ${entry.depth1*2}px;width:30px;">${entry.depth1.toString().slice(0, 4)}</div>
       `;
       
       document.getElementById('depth1-graph').prepend(dataContainer1);
@@ -144,7 +144,7 @@ onChildAdded(dataRef, (snapshot) => {
       dataContainer2.className = 'bar';  // Set the class to "bar"
       
       dataContainer2.innerHTML = `
-      <div class="bar" style="height: ${entry.depth2*2}px; width:30px;">${entry.depth2.toString().slice(0, 3)}</div>
+      <div class="bar" style="height: ${entry.depth2*2}px; width:30px;">${entry.depth2.toString().slice(0, 4)}</div>
       `;
      
       document.getElementById('depth2-graph').prepend(dataContainer2);
@@ -160,7 +160,7 @@ onChildAdded(dataRef, (snapshot) => {
       dataContainer3.className = 'bar';  // Set the class to "bar"
       
       dataContainer3.innerHTML = `
-      <div class="bar" style="height: ${(entry.temp1)*5}px;">${(entry.temp1.toString().slice(0, 3))}</div>
+      <div class="bar" style="height: ${(entry.temp1)*5}px;">${(entry.temp1.toString().slice(0, 5))}</div>
       `;
    document.getElementById('temp1-graph').prepend(dataContainer3);
       if (document.getElementById('temp1-graph').children.length > 15) {
