@@ -1,33 +1,37 @@
-name: Build and Deploy to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # or 'master', depending on your repo
+      - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Inject Firebase config
-        run: |
-          echo "Replacing firebaseConfig placeholder..."
-          sed -i "/const firebaseConfig = __FIREBASE_CONFIG__;/c\const firebaseConfig = {" FirebaseData.js
-          echo "  apiKey: '${{ secrets.API }}'," >> FirebaseData.js
-          echo "  authDomain: '${{ secrets.AUTH_DOMAIN }}'," >> FirebaseData.js
-          echo "  databaseURL: '${{ secrets.DATABASE_URL }}'," >> FirebaseData.js
-          echo "  projectId: '${{ secrets.PRJ_ID }}'," >> FirebaseData.js
-          echo "  storageBucket: '${{ secrets.BUCKET }}'," >> FirebaseData.js
-          echo "  messagingSenderId: '${{ secrets.MSG_ID }}'," >> FirebaseData.js
-          echo "  appId: '${{ secrets.ID }}'" >> FirebaseData.js
-          echo "};" >> FirebaseData.js
+    - name: Set up Firebase config block
+      run: |
+        FIREBASE_CONFIG="const firebaseConfig = {
+          apiKey: '${{ secrets.API_KEY }}',
+          authDomain: '${{ secrets.AUTH_DOMAIN }}',
+          databaseURL: '${{ secrets.DATABASE_URL }}',
+          projectId: '${{ secrets.PROJECT_ID }}',
+          storageBucket: '${{ secrets.STORAGE_BUCKET }}',
+          messagingSenderId: '${{ secrets.MSG_ID }}',
+          appId: '${{ secrets.APP_ID }}'
+        };"
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .  # If index.html is at repo root
+        # Replace the firebaseConfig object in FirebaseData.js
+        sed -i "/const firebaseConfig = {/,/^};/c\\$FIREBASE_CONFIG" FirebaseData.js
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: .
+        publish_branch: gh-pages
+        enable_jekyll: false
