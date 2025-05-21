@@ -1,27 +1,41 @@
-name: Deploy Website with Firebase Config
+name: Deploy Website to GitHub Pages
 
 on:
   push:
     branches:
-      - main 
+      - main  # or change to your default branch
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
+
+    env:
+      FIREBASE_CONFIG: |
+        const firebaseConfig = {
+          apiKey: "${{ secrets.FIREBASE_API_KEY }}",
+          authDomain: "${{ secrets.FIREBASE_AUTH_DOMAIN }}",
+          databaseURL: "${{ secrets.FIREBASE_DATABASE_URL }}",
+          projectId: "${{ secrets.FIREBASE_PROJECT_ID }}",
+          storageBucket: "${{ secrets.FIREBASE_STORAGE_BUCKET }}",
+          messagingSenderId: "${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}",
+          appId: "${{ secrets.FIREBASE_APP_ID }}"
+        };
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Replace firebaseConfig in FirebaseData.js using GitHub Secrets
-      - name: Inject Firebase secrets
+      - name: Replace firebaseConfig in FirebaseData.js
         run: |
-          sed -i "/const firebaseConfig = {/,/};/c\const firebaseConfig = {\n  apiKey: '${{ secrets.API_KEY }}',\n  authDomain: '${{ secrets.AUTH_DOMAIN }}',\n  databaseURL: '${{ secrets.DATABASE_URL }}',\n  projectId: '${{ secrets.PROJECT_ID }}',\n  storageBucket: '${{ secrets.STORAGE_BUCKET }}',\n  messagingSenderId: '${{ secrets.MSG_ID }}',\n  appId: '${{ secrets.APP_ID }}'\n};" FirebaseData.js
+          echo "Replacing firebaseConfig block..."
+          CONFIG=$(printf '%s\n' "$FIREBASE_CONFIG")
+          sed -i '/const firebaseConfig = {/,/^};/c\'"$CONFIG" FirebaseData.js
 
-      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
           publish_dir: .
+          publish_branch: gh-pages
+          exclude_assets: .github
+          enable_jekyll: false
