@@ -118,7 +118,7 @@ onChildAdded(dataRef, (snapshot) => {
   <span>${entry.time}</span>
   <span>${entry.depth1}</span>
   <span>${entry.temp1}</span>
-  <span>${entry.depth2}</span>
+  <span>${25 - entry.depth2}</span>
   <span>${entry.source}</span>
   `;
   document.getElementById('dashboard').prepend(dataContainer);
