@@ -2,10 +2,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.0/firebase
 import { getDatabase, ref, onValue, onChildAdded } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js";
 
 
-// TODO: Add SDKs for Firebase products that you want to use
-
-// https://firebase.google.com/docs/web/setup#available-libraries
-
 
 // Your web app's Firebase configuration
 
@@ -31,7 +27,7 @@ apiKey: "AIzaSyC-D17GV3prkmQDssF9ZbXiKGQq2-XLsiE",
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-// Reference to your data
+// Reference to data
 const dataRef = ref(db, 'sensors/data');
 
 
@@ -54,7 +50,7 @@ onValue(dataRef, (snapshot) => {
       <span>${entry.time}</span>
       <span>${entry.depth1}</span>
       <span>${entry.temp1}</span>
-      <span>${(25 - entry.depth2).toFixed(2)}</span>
+      <span>${entry.depth2}</span>
       <span>${entry.source}</span>
       `;
       document.getElementById('dashboard').prepend(dataContainer);
@@ -118,7 +114,7 @@ onChildAdded(dataRef, (snapshot) => {
   <span>${entry.time}</span>
   <span>${entry.depth1}</span>
   <span>${entry.temp1}</span>
-  <span>${(25 - entry.depth2).toFixed(2)}</span>
+  <span>${entry.depth2}</span>
   <span>${entry.source}</span>
   `;
   document.getElementById('dashboard').prepend(dataContainer);
